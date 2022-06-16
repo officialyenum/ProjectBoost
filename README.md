@@ -20,13 +20,6 @@ Project Boost 3D Game Built with Unity C#
 - Game Theme :
     - Experimental early generation spacecraft
     - On an unknown planet, trying to escape.
-- Art Assets :
-    - Player Ship
-    - Multiple Enemy Ships
-    - Projectiles(player and enemy)
-    - Background Sprites
-    - Fonts
-    - UI Sprites
 
 
 ## ONION DESIGN FOR PROJECT BOOST
