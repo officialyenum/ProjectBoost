@@ -34,12 +34,11 @@ public class Movement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space))
         {
-            Thrust();
+            StartThrust();
         }
         else
         {
-            audioSource.Stop();
-            bottomParticles.Stop();
+            StopThrust();
         }
     }
 
@@ -47,34 +46,67 @@ public class Movement : MonoBehaviour
     {
         if (Input.GetKey("left") || Input.GetKey(KeyCode.A))
         {
-            leftParticles.Play();
-            RotateThrust(rotationThrust);
+            // rotate left
+            RotateLeft();
         }
         else if (Input.GetKey("right") || Input.GetKey(KeyCode.D))
         {
-            rightParticles.Play();
-            RotateThrust(-rotationThrust);
+            // rotate right
+            RotateRight();
         }
         else
         {
-            leftParticles.Stop();
-            rightParticles.Stop();
+            RotateStop();
         }
 
     }
 
-    void Thrust()
+    void StartThrust()
     {
         rb.AddRelativeForce(Vector3.up * mainThrust * Time.deltaTime);
+        // Play thrust sound
         if (!audioSource.isPlaying)
         {
             audioSource.PlayOneShot(thrustSFX);
+        }
+        // play particle system
+        if (!bottomParticles.isPlaying)
+        {
             bottomParticles.Play();
-            // audioSource.Play(thrustSFX);
         }
     }
 
-    void RotateThrust(float rotateThrust)
+    void StopThrust()
+    {
+        audioSource.Stop();
+        bottomParticles.Stop();
+    }
+
+    void RotateLeft()
+    {
+        ApplyRotateThrust(rotationThrust);
+        if (!leftParticles.isPlaying)
+        {
+            leftParticles.Play(); // Play the particle system if it's not already playing
+        }
+    }
+
+    void RotateRight()
+    {
+        ApplyRotateThrust(-rotationThrust);
+        if (!rightParticles.isPlaying)
+        {
+            rightParticles.Play(); // Play the particle system if it's not already playing
+        }
+    }
+
+    void RotateStop()
+    {
+        leftParticles.Stop(); // stop the particles
+        rightParticles.Stop(); // stop the particles
+    }
+
+    void ApplyRotateThrust(float rotateThrust)
     {
         rb.freezeRotation = true; // freezing rotation so we can manually rotate
         transform.Rotate(Vector3.forward * rotateThrust * Time.deltaTime);

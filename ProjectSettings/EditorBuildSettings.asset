@@ -8,7 +8,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/OverScene.unity
     guid: 0c4b195c82ef1412cb192bfd3a672c6b
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/UnderScene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    guid: e5230c4d51a444eb8907f5a9d787727f
+  - enabled: 1
+    path: Assets/Scenes/GapScene.unity
+    guid: ccfac1f55bf6d4782b9d0c1cea6b3106
   m_configObjects: {}
